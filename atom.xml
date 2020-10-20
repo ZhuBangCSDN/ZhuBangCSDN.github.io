@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog of Alaga</title>
+  
+  
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-10-20T04:59:28.309Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>朱邦政</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Introduction</title>
+    <link href="http://yoursite.com/2020/07/21/hello-world/"/>
+    <id>http://yoursite.com/2020/07/21/hello-world/</id>
+    <published>2020-07-21T10:54:10.778Z</published>
+    <updated>2020-10-20T04:59:28.309Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Some-of-my-thoughts"><a href="#Some-of-my-thoughts" class="headerlink" title="Some of my thoughts"></a>Some of my thoughts</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Some-of-my-thoughts&quot;&gt;&lt;a href=&quot;#Some-of-my-thoughts&quot; class=&quot;headerlink&quot; title=&quot;Some of my thoughts&quot;&gt;&lt;/a&gt;Some of my thoughts&lt;/h3&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
