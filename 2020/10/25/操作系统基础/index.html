@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      操作系统基础 | Blog of Alaga 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="朱邦政">
+    
+    
+
+    <meta name="description" content="进程线程协程 进程是操作系统资源分配的最小单位，有自己独立的地址空间和堆，是程序的一次执行过程，进程也可以看作是程序加上数据加上 PCB 控制块组成。操作系统最开始的时候是只有进程的，后来发现进程的创建和撤销都要涉及到资源的再分配，开销比较大，于是才设计了线程，线程是操作系统调度执行的最小单位，也可以被看作是轻量级进程，一个进程中可以有多个至少有一个线程，它们共享进程的所拥有的资源，有自己的堆栈和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统基础 | Blog of Alaga">
+<meta property="og:url" content="http://yoursite.com/2020/10/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Blog of Alaga">
+<meta property="og:description" content="进程线程协程 进程是操作系统资源分配的最小单位，有自己独立的地址空间和堆，是程序的一次执行过程，进程也可以看作是程序加上数据加上 PCB 控制块组成。操作系统最开始的时候是只有进程的，后来发现进程的创建和撤销都要涉及到资源的再分配，开销比较大，于是才设计了线程，线程是操作系统调度执行的最小单位，也可以被看作是轻量级进程，一个进程中可以有多个至少有一个线程，它们共享进程的所拥有的资源，有自己的堆栈和">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-24T16:33:41.000Z">
+<meta property="article:modified_time" content="2020-10-24T16:40:10.408Z">
+<meta property="article:author" content="朱邦政">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    
+<link rel="stylesheet" href="/css/uno.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+<link rel="stylesheet" href="/css/archive.css">
+
+    
+<link rel="stylesheet" href="/css/china-social-icon.css">
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Blog of Alaga" type="application/atom+xml">
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Blog of Alaga</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">操作系统基础</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2020-10-25" class="post-meta__date date">2020-10-25</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a>, <a class="tags-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h2 id="进程线程协程"><a href="#进程线程协程" class="headerlink" title="进程线程协程"></a>进程线程协程</h2><ul>
+<li>进程是操作系统资源分配的最小单位，有自己独立的地址空间和堆，是程序的一次执行过程，进程也可以看作是程序加上数据加上 PCB 控制块组成。操作系统最开始的时候是只有进程的，后来发现进程的创建和撤销都要涉及到资源的再分配，开销比较大，于是才设计了线程，线程是操作系统调度执行的最小单位，也可以被看作是轻量级进程，一个进程中可以有多个至少有一个线程，它们共享进程的所拥有的资源，有自己的堆栈和局部变量，但是没有单独的地址空间，一个进程死掉所有的线程都会死掉。协程就是比线程更轻量级的存在，就是不受操作系统内核管理，完全由程序控制，也就是在用户态直接执行，不会像线程切换那样消耗资源，好处就是执行效率很高，没有线程切换的开销，然后还不需要锁，因为只有一个线程，所以就不存在同时写变量的冲突，只需要判断状态就行。</li>
+</ul>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><ul>
+<li>死锁就是指多个进程在运行过程中因为争夺资源而造成的一种僵局。简单来说就是有两个线程 A 和 B，然后它们互相持有对方需要的资源，并且同时请求对方的资源，然后谁都不放手，然后就形成了死循环，也就是死锁。</li>
+<li>产生死锁有四个必要条件，就是互斥条件，请求和保持条件，不剥夺条件，和循环等待条件。互斥条件就是一个资源任意时刻只能由一个线程占用。请求和保持条件就是一个进程因请求资源阻塞而阻塞的时候，不会释放已获得的资源。不剥夺条件就是线程已获得的资源在未使用完之前不能被其他线程强行剥夺。循环等待条件就是线程和资源之间的一种头尾相接的环形等待关系。</li>
+<li>预防死锁就要从这四个方面下手，首先互斥条件是不能破坏的，因为我们使用锁本来就是要它们互斥，我们可以破坏请求与保持条件，就是一次性把一个线程需要的所有资源都分配好，这里还可以做一些改进，就是在线程使用完分配好的资源后主动释放出去。然后时破坏不可剥夺条件，在请求不到其他资源的时候，主动释放自己的资源。最后是破坏循环等待条件，申请资源按照一个顺序申请，释放资源按照逆序释放。不过这几种方法都会损害系统性能，有一个比较好的方法就是银行家算法，银行家算法就是定义了状态和安全状态，当一个新的进程进入系统的时候，它必须说明需要的每种资源的最大数量，这个数量不能超过系统资源的总和，如果超过了就处于不安全状态，系统不会分配资源，直到其他进程释放足够资源为止。</li>
+<li>解除死锁就俩方法，一个是从其他进程剥夺足够数量的资源给死锁进程，一个是撤销死锁进程或者是撤销代价最小的进程。</li>
+<li>死锁的检测有 Jstack 和 Jconsole 工具。</li>
+</ul>
+<h2 id="进程间通信、线程间通信-同步"><a href="#进程间通信、线程间通信-同步" class="headerlink" title="进程间通信、线程间通信/同步"></a>进程间通信、线程间通信/同步</h2><ul>
+<li>进程间通信有七种方式，分别是管道，命名管道，消息队列，共享内存，信号量，套接字，以及信号。管道是半双工的，也就是数据只能单向流动，只能用于父子进程或者是兄弟进程之间。命名管道也是半双工的方式，但是它允许无亲缘进程之间的通信。消息队列的消息的链表，存放在内核中，由队列 ID 标识。信号量是一个计数器是用于进程间互斥与同步的，可以用来控制多个进程对资源的访问，如果信号量的上限是 1，就成为了一个锁，如果需要在进程之间传递数据还需要结合共享内存来实现</li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+  <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+</section>
+
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno" target="_blank" rel="noopener">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
